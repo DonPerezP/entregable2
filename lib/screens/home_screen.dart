@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:notes_crud_local_app/providers/notes_provider.dart';
-import 'package:notes_crud_local_app/screens/create_note_screen.dart';
-import 'package:notes_crud_local_app/screens/list_notes_screen.dart';
+import 'package:notes_crud_local_app/models/student_model.dart';
+import 'package:notes_crud_local_app/providers/student_provider.dart';
+import 'package:notes_crud_local_app/screens/create_student_screen.dart';
+import 'package:notes_crud_local_app/screens/list_student_screen.dart';
+import 'package:notes_crud_local_app/screens/details_student_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/actual_option_provider.dart';
@@ -14,10 +16,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Center(child: Text("Home Notas")),
+          title: const Center(child: Text("Estudiantes")),
+          backgroundColor: Colors.green,
         ),
         body: _HomeScreenBody(),
         bottomNavigationBar: const CustomNavigatorBar());
+        
   }
 }
 
@@ -31,11 +35,13 @@ class _HomeScreenBody extends StatelessWidget {
 
     switch (selectedOption) {
       case 0:
-        return const ListNotesScreen();
+        return const ListStudentScreen();
       case 1:
-        return const CreateNoteScreen();
+        return const CreateStudentScreen();
+      case 2:
+        return const DetailsStudentScreen();
       default:
-        return const ListNotesScreen();
+        return const ListStudentScreen();
     }
   }
 }
